@@ -1,0 +1,108 @@
+
+<div class="pure-container" data-effect="pure-effect-scaleRotate">
+  <input type="checkbox" id="pure-toggle-left" class="pure-toggle" data-toggle="left"/>
+  <label class="pure-toggle-label" for="pure-toggle-left" data-toggle-label="left"><span class="g"><h1>G-for</h1></span></label>
+ 
+  <nav class="pure-drawer" data-position="left">
+      <ul id ="gloval1"class="listmenu">
+　　　　　<!-- ここがドロワーメニュー -->
+        <li>ログイン</li>
+        <li>リスト2</li>
+        <li>リスト3</li>
+        <li>リスト4</li>
+        <li>リスト5</li>
+        <li>リスト6</li>
+      </ul>
+      <a class = "author" href ="https://twitter.com/RightandCheap?lang=ja" target = "_blank">Created by @RightandCheap ...</a>
+  </nav>
+ 
+  <div class="pure-pusher-container">
+    <div class="pure-pusher">
+      <div class="inner">
+      <!-- ここがコンテンツ -->
+        <div class ="container">
+          <div class = "clockflame" id="clock_frame">
+            <!-- 日付部分 -->
+            <span class = "c-date"id="clock_date"></span>
+            <!-- 時刻部分 -->
+            <span class = "c-time"id="clock_time"></span>
+                        
+            <!-- モーダルウィンドウ部分 -->  
+            <div class="popupModal1">
+              <input type="radio" name="modalPop" id="pop11" />
+              <!-- アラーム時刻 -->
+                <label for="pop11">
+                  <span class = "a-time" id = "alarm_time"><a>NEXT ALARM : </a>00:00</span>
+                </label>                
+              <input type="radio" name="modalPop" id="pop12" />
+                <label for="pop12">CLOSE</label>
+              <input type="radio" name="modalPop" id="pop13" />
+                <label for="pop13">×</label>
+              <div class="modalPopup2">
+                <div class="modalPopup3">
+                <p class="modalTitle">アラーム設定</p>
+                  <div class = "as" id = "as">
+                    <label>
+                      <input type="radio" name="alarmselect"
+                             class = "alarmradio1" value="as1" 
+                             id = "timereport1" onclick = "alarmConfig1()"/>
+                             毎時0分に設定
+                    </label>
+                    <label>
+                      <input type="radio" name="alarmselect" 
+                             class = "alarmradio1" value="as2" 
+                             id = "timereport2" onclick = "alarmConfig2()"/>
+                             <a id = "t2">毎時30分に設定</a>
+                    </label>
+                    <label>
+                      <input type="radio" name="alarmselect" 
+                             class = "alarmradio1" value="as3" 
+                             id = "timereport3" onclick = "alarmConfig3()"/>
+                             <a id = "t3">毎時50分に設定</a>
+                    </label>
+                    <label>
+                      <input type="radio" name="alarmselect" 
+                             class = "alarmradio1" value="as4" 
+                             id = "timereport4" onclick = "alarmConfig4()"/>
+                             <a id = "t4">□時□分</a>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- モーダルウィンドウ部分ここまで -->  
+          </div>
+        </div>
+          <!--アラームのベル部分-->
+          <div class = "alarmbotton" id = "alarmbutton">
+            <label>
+              <input type="checkbox" id="alarmbotton" 
+                     class = "alarmbotton1"onclick = "bellColorChange()"/>
+                        <span id = "fa" class="fa fa-bell"></span>
+            </label>
+            <audio src = "/chime13.mp3" id = "sound"></audio>
+          </div>
+          <!--アラームのベル部分ここまで-->
+          <!--３つの動く白丸部分-->
+          <div class="container-2">
+            
+            <div class="page page-2">
+              
+              <ol>
+                <li class="circle circle-bordered circle-bordered-one"></li>
+                <li class="circle circle-bordered circle-bordered-two"></li>
+                <li class="circle circle-bordered circle-bordered-three"></li>
+              </ol>
+            </div>
+            
+          </div>
+          <!--３つの動く白丸部分ここまで-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+
+
+

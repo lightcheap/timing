@@ -172,7 +172,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
-  pg (~> 0.18.4)
+  pg
   puma (~> 3.7)
   rails (~> 5.1.5)
   sass-rails (~> 5.0)

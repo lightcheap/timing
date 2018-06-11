@@ -55,7 +55,7 @@ function clock()
         //　２こ目　仮で30分毎
         var alarm_minutes = ["0"+0,30];
         if( mi < 30 ){
-            sealarm_hourtH = h;
+            alarm_hour = h;
             alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minutes[1];
         }else{
             alarm_hour = h + 1;
@@ -87,7 +87,7 @@ function clock()
         alarm_hour = 18;
         alarm_minute = 37;
             alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;
-            document.getElementById("t4").innerHTML = alarm_hour + "時" + alarm_minute + "分";
+            document.getElementById("t4").innerHTML = alarm_hour + "時" + alarm_minute + "分に設定";
             if( alarm_flug == 1 && h == alarm_hour && mi == alarm_minute && s <= "10"){
                 alarmSound.play();
             }

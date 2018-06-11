@@ -3,6 +3,8 @@
 
 var alarm_hour = 0;// アラームセットの時間
 var alarm_minute = 0;// アラームセットの分
+var alarm_flug = 0;//ベルが黄色=１
+
 // 時計のメインとなる関数
 function clock()
 {
@@ -30,85 +32,87 @@ function clock()
     document.getElementById("clock_frame").style.fontSize =  window.innerWidth / 10 + "px";
 
 // 仮の処理として毎時0分に音を鳴らす。出来たらモジュールわけとかする。----
-    var alarmOnCheck = document.getElementById("alarmbotton");
+    
     var alarmSound = document.getElementById("sound");
     var timereport1 = document.getElementById("timereport1");
     var timereport2 = document.getElementById("timereport2");
     var timereport3 = document.getElementById("timereport3");
     var timereport4 = document.getElementById("timereport4");
-    var alarm_time = document.getElementById("alarm_time");
-    var setH ;//アラームを鳴らす時間
-    var setMI;//アラームを鳴らす分
+    var alarm_time = document.getElementById("alarm_time");   
+
 
     //モーダルの選択した内容でネクストアラームの表示を変える
     if( timereport1.checked == true ){
         // 1こ目　毎時0分
-        setH = h + 1;//　時間は１つ繰り上げ
-        setMI ="0"+0;//　分は００分
-        if( setH == 24 ){ setH = 0; }
-        alarm_time.innerHTML = "NEXT ALARM : " + setH + ":" + setMI;
+        alarm_hour = h + 1;//　時間は１つ繰り上げ
+        alarm_minute ="0"+0;//　分は００分
+        if( alarm_hour == 24 ){ alarm_hour = 0; }
+        alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;
+        if( alarm_flug == 1 && mi == "00" && s <= "10"){
+            alarmSound.play();
+        }
     }else if ( timereport2.checked == true ){
         //　２こ目　仮で30分毎
-        setMI = ["0"+0,30];
+        var alarm_minutes = ["0"+0,30];
         if( mi < 30 ){
-            setH = h;
-            alarm_time.innerHTML = "NEXT ALARM : " + setH + ":" + setMI[1];
+            sealarm_hourtH = h;
+            alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minutes[1];
         }else{
-            setH = h + 1;
-            if( setH == 24 ){ setH = 0; }
-            alarm_time.innerHTML = "NEXT ALARM : " + setH + ":" + setMI[0];
+            alarm_hour = h + 1;
+            if( alarm_hour == 24 ){ alarm_hour = 0; }
+            alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minutes[0];
+        }
+        if( alarm_flug == 1 && mi == "00" && s <= "10"){
+            alarmSound.play();
+        }else if( alarm_flug == 1 && mi == "30" && s <= "10" ){
+            alarmSound.play();
         }
     }else if( timereport3.checked == true ){
         // 3こ目 
-        setMI = 50;
+        alarm_minute = 50;
         if ( mi < 50 ){
-            setH = h;
-            alarm_time.innerHTML = "NEXT ALARM : " + setH + ":" + setMI;
+            alarm_hour = h;
+            alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;
         }else{
-            setH = h + 1;
-            if( setH == 24 ){ setH = 0; }
-            alarm_time.innerHTML = "NEXT ALARM : " + setH + ":" + setMI;
+            alarm_hour = h + 1;
+            if( alarm_hour == 24 ){ alarm_hour = 0; }
+            alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;
+        }
+        if( alarm_flug == 1 && mi == "50" && s <= "10"){
+            alarmSound.play();
         }
 
     }else if( timereport4.checked == true ){
         //４こ目
-            setH = 17;
-            setMI = 30;
-            alarm_time.innerHTML = "NEXT ALARM : " + setH + ":" + setMI;
-            document.getElementById("t4").innerHTML = setH + "時" + setMI + "分";
+        alarm_hour = 18;
+        alarm_minute = 37;
+            alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;
+            document.getElementById("t4").innerHTML = alarm_hour + "時" + alarm_minute + "分";
+            if( alarm_flug == 1 && h == alarm_hour && mi == alarm_minute && s <= "10"){
+                alarmSound.play();
+            }
     }else{
         alarm_time.innerHTML = "NEXT ALARM : " + "00" + ":" + "00";
     }
- 
-    if( alarmOnCheck.checked == true && h == setH && mi == setMI && s <= "10"){
-        alarmSound.play();
-    }
+    
 
-
-
-}
+}//function end
 
 //中央のベルマークがクリックされるごとに色が変わる
 //チェックボックスにチェックされていたら黄色、そうでなければ白
 function bellColorChange(){
     var alarmOnCheck = document.getElementById("alarmbotton");
     var fa = document.getElementById("fa");
+    
     if ( alarmOnCheck.checked == true ){
         fa.style.color = "yellow";
+        alarm_flug = 1;
     }else if( alarmOnCheck.checked != true ){
         fa.style.color = "whitesmoke";
+        alarm_flug = 0;
     }
 }
-//
-function alarmConfig1(){
-    let tr1 = document.getElementById("timereport1");
-    let as = document.getElementById("as");
-    if ( tr1.checked == true ){
-        as.style.color = "yellow";
-    }else if( tr1.checked != true ){
-        as.style.color = "whitesmoke";
-}
-}
+
 // 上記のclock関数を1000ミリ秒ごと(毎秒)に実行する
     setInterval(clock, 1000);
 

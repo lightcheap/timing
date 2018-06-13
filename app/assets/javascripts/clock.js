@@ -1,6 +1,3 @@
-
-
-
 var alarm_hour = 0;// アラームセットの時間
 var alarm_minute = 0;// アラームセットの分
 var alarm_flug = 0;//ベルが黄色=１
@@ -48,7 +45,7 @@ function clock()
         alarm_minute ="0"+0;//　分は００分
         if( alarm_hour == 24 ){ alarm_hour = 0; }
         alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;
-        if( alarm_flug == 1 && mi == "00" && s <= "10"){
+        if( alarm_flug == 1 && mi == "00" && s <= "15"){
             alarmSound.play();
         }
     }else if ( timereport2.checked == true ){
@@ -62,9 +59,9 @@ function clock()
             if( alarm_hour == 24 ){ alarm_hour = 0; }
             alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minutes[0];
         }
-        if( alarm_flug == 1 && mi == "00" && s <= "10"){
+        if( alarm_flug == 1 && mi == "00" && s <= "15"){
             alarmSound.play();
-        }else if( alarm_flug == 1 && mi == "30" && s <= "10" ){
+        }else if( alarm_flug == 1 && mi == "30" && s <= "15" ){
             alarmSound.play();
         }
     }else if( timereport3.checked == true ){
@@ -78,7 +75,7 @@ function clock()
             if( alarm_hour == 24 ){ alarm_hour = 0; }
             alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;
         }
-        if( alarm_flug == 1 && mi == "50" && s <= "10"){
+        if( alarm_flug == 1 && mi == "50" && s <= "15"){
             alarmSound.play();
         }
 
@@ -88,7 +85,7 @@ function clock()
         alarm_minute = 37;
             alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;
             document.getElementById("t4").innerHTML = alarm_hour + "時" + alarm_minute + "分に設定";
-            if( alarm_flug == 1 && h == alarm_hour && mi == alarm_minute && s <= "10"){
+            if( alarm_flug == 1 && h == alarm_hour && mi == alarm_minute && s <= "15"){
                 alarmSound.play();
             }
     }else{

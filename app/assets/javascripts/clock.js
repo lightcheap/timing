@@ -81,12 +81,13 @@ function clock()
 
     }else if( timereport4.checked == true ){
         //４こ目
-        alarm_hour = 18;
-        alarm_minute = 37;
+        alarm_hour = 15;
+        alarm_minute = 10;
             alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;
             document.getElementById("t4").innerHTML = alarm_hour + "時" + alarm_minute + "分に設定";
             if( alarm_flug == 1 && h == alarm_hour && mi == alarm_minute && s <= "15"){
                 alarmSound.play();
+                viewNotification()
             }
     }else{
         alarm_time.innerHTML = "NEXT ALARM : " + "00" + ":" + "00";

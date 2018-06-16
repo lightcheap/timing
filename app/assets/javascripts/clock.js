@@ -109,6 +109,15 @@ function bellColorChange(){
         alarm_flug = 0;
     }
 }
+//ブラウザの通知を実装する部分
+function viewNotification(){
+    var notification = new Notification('タイマー終了しました', {
+		body: 'クリックしてください'
+    });
+    notification.onclick = function(){
+		window.focus();
+	};
+}
 
 // 上記のclock関数を1000ミリ秒ごと(毎秒)に実行する
     setInterval(clock, 1000);

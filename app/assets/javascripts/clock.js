@@ -1,7 +1,7 @@
 var alarm_hour = 0;// アラームセットの時間
 var alarm_minute = 0;// アラームセットの分
 var alarm_flug = 0;//ベルが黄色=１
-var notificationflg = 0;
+var notificationflg = 0;//通知の為のフラグ変数
 
 window.onload = function(){
     // ページ読み込み時に実行したい処理

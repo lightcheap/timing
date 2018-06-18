@@ -1,6 +1,39 @@
 var alarm_hour = 0;// アラームセットの時間
 var alarm_minute = 0;// アラームセットの分
 var alarm_flug = 0;//ベルが黄色=１
+var notificationflg = 0;
+
+window.onload = function(){
+    // ページ読み込み時に実行したい処理
+    // ブラウザが通知をサポートしているか確認する
+  if (!('Notification' in window)) {
+    alert('未対応のブラウザです');
+  }
+  else {
+    // 許可を求める
+    Notification.requestPermission()
+      .then((permission) => {
+        if (permission == 'granted') {
+          // 許可
+        } else if (permission == 'denied') {
+          // 拒否
+        } else if (permission == 'default') {
+          // 無視
+        }
+      });
+  }
+}//function end
+
+//アラーム通知表示の関数。
+function alarmNotification(theBody,theTitle) {
+    var options = {
+        body: theBody,
+        //icon: theIcon　表示するときは引数にするべし
+    }
+    var n = new Notification(theTitle,options);
+    
+    setTimeout(n.close.bind(n), 5000); 
+  }//function end
 
 // 時計のメインとなる関数
 function clock()
@@ -30,7 +63,7 @@ function clock()
 
 // 仮の処理として毎時0分に音を鳴らす。出来たらモジュールわけとかする。----
     
-    var alarmSound = document.getElementById("sound");
+
     var timereport1 = document.getElementById("timereport1");
     var timereport2 = document.getElementById("timereport2");
     var timereport3 = document.getElementById("timereport3");
@@ -46,7 +79,8 @@ function clock()
         if( alarm_hour == 24 ){ alarm_hour = 0; }
         alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;
         if( alarm_flug == 1 && mi == "00" && s <= "15"){
-            alarmSound.play();
+            alarm();
+            notificationflg ++;
         }
     }else if ( timereport2.checked == true ){
         //　２こ目　仮で30分毎
@@ -60,9 +94,11 @@ function clock()
             alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minutes[0];
         }
         if( alarm_flug == 1 && mi == "00" && s <= "15"){
-            alarmSound.play();
+            alarm();
+            notificationflg ++;
         }else if( alarm_flug == 1 && mi == "30" && s <= "15" ){
-            alarmSound.play();
+            alarm();
+            notificationflg ++;
         }
     }else if( timereport3.checked == true ){
         // 3こ目 
@@ -76,18 +112,19 @@ function clock()
             alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;
         }
         if( alarm_flug == 1 && mi == "50" && s <= "15"){
-            alarmSound.play();
+            alarm();
+            notificationflg ++;
         }
 
     }else if( timereport4.checked == true ){
         //４こ目
-        alarm_hour = 15;
-        alarm_minute = 10;
+        alarm_hour = 12;
+        alarm_minute = 40;
             alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;
             document.getElementById("t4").innerHTML = alarm_hour + "時" + alarm_minute + "分に設定";
             if( alarm_flug == 1 && h == alarm_hour && mi == alarm_minute && s <= "15"){
-                alarmSound.play();
-                viewNotification()
+                alarm();
+                notificationflg ++;
             }
     }else{
         alarm_time.innerHTML = "NEXT ALARM : " + "00" + ":" + "00";
@@ -109,15 +146,18 @@ function bellColorChange(){
         fa.style.color = "whitesmoke";
         alarm_flug = 0;
     }
-}
-//ブラウザの通知を実装する部分
-function viewNotification(){
-    var notification = new Notification('タイマー終了しました', {
-		body: 'クリックしてください'
-    });
-    notification.onclick = function(){
-		window.focus();
-	};
+}//function end
+
+function alarm(){
+    
+    var alarmSound = document.getElementById("sound");
+    alarmSound.play();
+    if ( notificationflg == 1 ){
+        alarmNotification("アラーム設定した時間がきました。","Timin-G");
+        
+    }
+    
+
 }
 
 // 上記のclock関数を1000ミリ秒ごと(毎秒)に実行する

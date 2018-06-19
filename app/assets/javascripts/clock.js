@@ -32,9 +32,9 @@ function alarmNotification(theBody,theTitle) {
     }
     var n = new Notification(theTitle,options);// インスタンス
     //通知クリックでページ開く
-    n.addEventListener('click', event => {
+    n.addEventListener('click', function(){
         open('https://secure-shelf-71208.herokuapp.com/');
-    }, false);
+    });
     //通知を10秒間表示
     setTimeout(n.close.bind(n), 10000); 
   }//function end
@@ -135,8 +135,8 @@ function clock()
     if( timereport4.checked == true ){
         //４こ目
         l4.style.backgroundColor = "floralwhite";
-        alarm_hour = 12;
-        alarm_minute = 40;
+        alarm_hour = 8;
+        alarm_minute = 37;
             alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;
             document.getElementById("t4").innerHTML = alarm_hour + "時" + alarm_minute + "分に設定";
             if( alarm_flug == 1 && h == alarm_hour && mi == alarm_minute && s <= "15"){

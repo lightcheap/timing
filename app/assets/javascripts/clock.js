@@ -69,21 +69,28 @@ function clock()
     var timereport3 = document.getElementById("timereport3");
     var timereport4 = document.getElementById("timereport4");
     var alarm_time = document.getElementById("alarm_time");   
-
+    var l1 = document.getElementById("l-1");
+    var l2 = document.getElementById("l-2");
+    var l3 = document.getElementById("l-3");
+    var l4 = document.getElementById("l-4");
 
     //モーダルの選択した内容でネクストアラームの表示を変える
     if( timereport1.checked == true ){
         // 1こ目　毎時0分
+        l1.style.backgroundColor = "floralwhite";
         alarm_hour = h + 1;//　時間は１つ繰り上げ
         alarm_minute ="0"+0;//　分は００分
         if( alarm_hour == 24 ){ alarm_hour = 0; }
         alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;
         if( alarm_flug == 1 && mi == "00" && s <= "15"){
             alarm();
-            notificationflg ++;
+            notificationflg ++;        
         }
-    }else if ( timereport2.checked == true ){
+    }else if (timereport1.checked != true ){l1.style.backgroundColor = "#dddddd"; }
+
+    if ( timereport2.checked == true ){
         //　２こ目　仮で30分毎
+        l2.style.backgroundColor = "azure";
         var alarm_minutes = ["0"+0,30];
         if( mi < 30 ){
             alarm_hour = h;
@@ -100,8 +107,11 @@ function clock()
             alarm();
             notificationflg ++;
         }
-    }else if( timereport3.checked == true ){
-        // 3こ目 
+    }else if (timereport2.checked != true ){l2.style.backgroundColor = "#dddddd";}
+
+    if( timereport3.checked == true ){
+        // 3こ目
+        l3.style.backgroundColor = "azure"; 
         alarm_minute = 50;
         if ( mi < 50 ){
             alarm_hour = h;
@@ -115,9 +125,12 @@ function clock()
             alarm();
             notificationflg ++;
         }
+    
+    }else if (timereport3.checked != true ){l3.style.backgroundColor = "#dddddd";}
 
-    }else if( timereport4.checked == true ){
+    if( timereport4.checked == true ){
         //４こ目
+        l4.style.backgroundColor = "azure";
         alarm_hour = 12;
         alarm_minute = 40;
             alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;
@@ -126,9 +139,7 @@ function clock()
                 alarm();
                 notificationflg ++;
             }
-    }else{
-        alarm_time.innerHTML = "NEXT ALARM : " + "00" + ":" + "00";
-    }
+    }else if (timereport4.checked != true ){l4.style.backgroundColor = "#dddddd";}
     
 
 }//function end
@@ -148,6 +159,8 @@ function bellColorChange(){
     }
 }//function end
 
+
+
 function alarm(){
     
     var alarmSound = document.getElementById("sound");
@@ -155,10 +168,10 @@ function alarm(){
     if ( notificationflg == 1 ){
         alarmNotification("アラーム設定した時間がきました。","Timin-G");
         
-    }
-    
+    }   
 
-}
+}//function end
+
 
 // 上記のclock関数を1000ミリ秒ごと(毎秒)に実行する
     setInterval(clock, 1000);

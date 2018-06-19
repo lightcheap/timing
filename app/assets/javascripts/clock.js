@@ -30,9 +30,13 @@ function alarmNotification(theBody,theTitle) {
         body: theBody,
         //icon: theIcon　表示するときは引数にするべし
     }
-    var n = new Notification(theTitle,options);
-    
-    setTimeout(n.close.bind(n), 5000); 
+    var n = new Notification(theTitle,options);// インスタンス
+    //通知クリックでページ開く
+    n.addEventListener('click', event => {
+        open('https://secure-shelf-71208.herokuapp.com/');
+    }, false);
+    //通知を10秒間表示
+    setTimeout(n.close.bind(n), 10000); 
   }//function end
 
 // 時計のメインとなる関数
@@ -90,7 +94,7 @@ function clock()
 
     if ( timereport2.checked == true ){
         //　２こ目　仮で30分毎
-        l2.style.backgroundColor = "azure";
+        l2.style.backgroundColor = "floralwhite";
         var alarm_minutes = ["0"+0,30];
         if( mi < 30 ){
             alarm_hour = h;
@@ -111,7 +115,7 @@ function clock()
 
     if( timereport3.checked == true ){
         // 3こ目
-        l3.style.backgroundColor = "azure"; 
+        l3.style.backgroundColor = "floralwhite"; 
         alarm_minute = 50;
         if ( mi < 50 ){
             alarm_hour = h;
@@ -130,7 +134,7 @@ function clock()
 
     if( timereport4.checked == true ){
         //４こ目
-        l4.style.backgroundColor = "azure";
+        l4.style.backgroundColor = "floralwhite";
         alarm_hour = 12;
         alarm_minute = 40;
             alarm_time.innerHTML = "NEXT ALARM : " + alarm_hour + ":" + alarm_minute;

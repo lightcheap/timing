@@ -4745,7 +4745,10 @@ max-width: 100%;
     cursor: pointer;
   }
 }
-  
+
+.alarmradio1{
+  display:none;
+}
 
 /*---------アラームボタン-------------------------*/
 #alarmbutton{
@@ -4784,4 +4787,15 @@ max-width: 100%;
 }
 #l-4:active{
   background-color: darkgray;
+}
+/*アラームの数値セットモーダル部分*/
+#modal2-content {
+	width: 50% ;
+	margin: 0 ;
+	padding: 10px 20px ;
+	border: 2px solid #aaa ;
+	background: #fff ;
+	position: fixed ;
+	display: none ;
+	z-index: 999 ;
 }

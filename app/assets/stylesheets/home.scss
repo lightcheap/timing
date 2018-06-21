@@ -4801,7 +4801,21 @@ max-width: 100%;
   display: none ;
 }
 
+select#maiji,#alarmhour,#alarmminute{
+  font-size: 30px;
+  border: 0px;
+  background-color: rgba(211,211,211,0.2);
+}
 
+#amaiji{
+  font-size: 30px;
+  text-align: center;
+}
+
+#ahour{
+  text-align: center;
+  font-size: 30px;
+}
 
 #modal2-content {
   top:38%;

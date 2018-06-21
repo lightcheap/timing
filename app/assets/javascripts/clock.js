@@ -164,7 +164,19 @@ function bellColorChange(){
     }
 }//function end
 
+function alarmSetting(){
+    
+    fadeIn(document.querySelector('#modal2-overlay'), 100);
+    fadeIn(document.querySelector('#modal2-content'), 300);
+}
 
+function alarmSettingClear(){
+    var modal2Overlay = document.getElementById("modal2-overlay");
+    var modal2Content = document.getElementById("modal2-content");
+    
+    modal2Overlay.style.display = "none";
+    modal2Content.style.display = "none";
+}
 
 function alarm(){
     
@@ -177,8 +189,37 @@ function alarm(){
 
 }//function end
 
+function fadeIn(node, duration) {
+    // display: noneでないときは何もしない
+    if (getComputedStyle(node).display !== 'none') return;
+    
+    // style属性にdisplay: noneが設定されていたとき
+    if (node.style.display === 'none') {
+      node.style.display = '';
+    } else {
+      node.style.display = 'block';
+    }
+    node.style.opacity = 0;
+  
+    var start = performance.now();
+    
+    requestAnimationFrame(function tick(timestamp) {
+      // イージング計算式（linear）
+      var easing = (timestamp - start) / duration;
+  
+      // opacityが1を超えないように
+      node.style.opacity = Math.min(easing, 1);
+  
+      // opacityが1より小さいとき
+      if (easing < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        node.style.opacity = '';
+      }
+    });
+}
 
 // 上記のclock関数を1000ミリ秒ごと(毎秒)に実行する
     setInterval(clock, 1000);
 
-
+    

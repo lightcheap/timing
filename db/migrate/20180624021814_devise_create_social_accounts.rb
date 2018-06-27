@@ -31,6 +31,10 @@ class DeviseCreateSocialAccounts < ActiveRecord::Migration[5.1]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
+      t.string :users, :provider
+      t.string :users, :uid
+      t.string :users, :token
+      t.text :users, :meta
 
 
       t.timestamps null: false

@@ -247,6 +247,7 @@ DEPENDENCIES
   devise
   google-api-client
   jbuilder (~> 2.5)
+  omniauth
   omniauth-google-oauth2
   pg
   puma (~> 3.7)

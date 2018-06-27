@@ -7,7 +7,7 @@ class SocialAccount < ApplicationRecord
   def self.find_for_google(auth)
     socialaccount = SocialAccount.find_by(email: auth.info.email)
 
-    unless user
+    unless socialaccount
       socialaccount = SocialAccount.create(name:     auth.info.name,
                                             provider: auth.provider,
                                                   uid:      auth.uid,
@@ -15,6 +15,6 @@ class SocialAccount < ApplicationRecord
                               password: Devise.friendly_token[0, 20],
                                               meta:     auth.to_yaml)
     end
-    user
+    socialaccount
   end
 end

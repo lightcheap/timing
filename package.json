@@ -1,5 +1,21 @@
 {
   "name": "jihow",
   "private": true,
+  "web":{
+    "client_id":"195336997976-rog36oh79ls8h4dao7cp622ucbjggkjf.apps.googleusercontent.com",
+    "project_id":"timin-g",
+    "auth_uri":"https://accounts.google.com/o/oauth2/auth",
+    "token_uri":"https://accounts.google.com/o/oauth2/token",
+    "auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret":"q7OMcg-PA3GWZiAaAcYpKYQk",
+    "redirect_uris":[
+        "https://secure-shelf-71208.herokuapp.com/auth/google_oauth2/callback",
+        "http://localhost:3000/auth/google_oauth2/callback"
+    ],
+    "javascript_origins":[
+        "https://secure-shelf-71208.herokuapp.com",
+        "http://localhost:3000"
+        ]},
   "dependencies": {}
+
 }

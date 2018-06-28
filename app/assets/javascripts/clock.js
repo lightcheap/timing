@@ -145,6 +145,7 @@ function bellColorChange(){
     if ( alarmOnCheck.checked == true ){
         fa.style.color = "yellow";
         alarm_flug = 1;
+        window.alert("アラームON");
     }else if( alarmOnCheck.checked != true ){
         fa.style.color = "whitesmoke";
         alarm_flug = 0;
@@ -163,6 +164,26 @@ function alarmSettingClear(){
     
     modal2Overlay.style.display = "none";
     modal2Content.style.display = "none";
+}
+//------------------------------------------------------------------
+function soundselect1(){
+    var sound = document.getElementById("sound");
+    
+    window.alert(sound);
+    
+    
+}
+function soundselect2(){
+    window.alert("sd2");
+}
+function soundselect3(){
+    document.getElementsById("sound").src = "/pinponpan.mp3";
+}
+function soundselect4(){
+    document.getElementsById("sound").src = "/train.mp3";
+}
+function soundselect5(){
+    document.getElementsById("sound").src = "/nandeyanen.mp3";
 }
 //--------------------------------------------------------------------------------
 function alarm(){

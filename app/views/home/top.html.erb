@@ -5,12 +5,11 @@
  
   <nav class="pure-drawer" data-position="left"><!-- ここがドロワーメニュー -->
       <ul id ="gloval1"class="listmenu">
-　　　　 <li><%= link_to 'Google Login', social_account_google_omniauth_authorize_path %></li>
-        <li>リスト2</li>
-        <li>リスト3</li>
-        <li>リスト4</li>
-        <li>リスト5</li>
-        <li>リスト6</li>
+　　　　 <li id = "li" onclick = "soundselect1()">Sound 1</li>
+        <li onclick = "soundselect2()">Sound 2</li>
+        <li onclick = "soundselect3()">Sound 3</li>
+        <li onclick = "soundselect4()">Sound 4</li>
+        <li onclick = "soundselect5()">Sound 5※注意</li>
       </ul>
       <a class = "author" href ="https://twitter.com/RightandCheap?lang=ja" target = "_blank">Created by @RightandCheap ...</a>
   </nav><!-- ドロワーメニュー  end-->
@@ -79,7 +78,7 @@
                      class = "alarmbotton1"onclick = "bellColorChange()"/>
                         <span id = "fa" class="fa fa-bell"></span>
             </label>
-            <audio src = "/chime13.mp3" id = "sound"></audio>
+            <audio id = "sound" src = "/chime13.mp3" ></audio>
           </div>
           <!--アラームのベル部分ここまで-->
           <!--３つの動く白丸部分-->

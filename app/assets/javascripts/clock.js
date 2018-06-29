@@ -168,22 +168,28 @@ function alarmSettingClear(){
 //------------------------------------------------------------------
 function soundselect1(){
     var sound = document.getElementById("sound");
-    
-    window.alert(sound);
-    
-    
+    sound.src = "/chime13.mp3";
+    window.alert("アラーム音を変更しました。");    
 }
 function soundselect2(){
-    window.alert("sd2");
+    var sound = document.getElementById("sound");
+    sound.src = "/chime11.mp3";
+    window.alert("アラーム音を変更しました。");
 }
 function soundselect3(){
-    document.getElementsById("sound").src = "/pinponpan.mp3";
+    var sound = document.getElementById("sound");
+    sound.src = "/pinponpan.mp3";
+    window.alert("アラーム音を変更しました。");
 }
 function soundselect4(){
-    document.getElementsById("sound").src = "/train.mp3";
+    var sound = document.getElementById("sound");
+    sound.src = "/train.mp3";
+    window.alert("アラーム音を変更しました。");
 }
 function soundselect5(){
-    document.getElementsById("sound").src = "/nandeyanen.mp3";
+    var sound = document.getElementById("sound");
+    sound.src = "/nandeyanen.mp3";
+    window.alert("アラーム音を変更しました。");
 }
 //--------------------------------------------------------------------------------
 function alarm(){
